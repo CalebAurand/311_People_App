@@ -46,6 +46,29 @@ app.post('/users', (req, res) => {
   res.json(users[lastIndex]);
 });
 
+app.put('/users/:id', (req, res)=>{
+   //create new user object variable to hold data
+   let Id = req.params.id;
+   let found = users.find(el => el._id == Id);
+   let json = req.body;
+   console.log("body = ", json);
+   found.name = json.name;
+   found.occupation = json.occupation;
+   console.log(found);
+   res.json(found);
+});
+
+app.delete('/users/:id', (req, res)=>{
+  let Id = req.params.id;
+  console.log("Id is ", Id)
+  let foundIndex;
+  foundIndex = users.findIndex(el => Id == el._id);
+  console.log("foundIndex is ", foundIndex);
+  // console.log("body = ", json);
+  users.splice(foundIndex, 1);
+  res.sendStatus(204);
+});
+
 /* END - create routes here */
 
 app.listen(port, () => 

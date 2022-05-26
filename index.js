@@ -46,6 +46,11 @@ app.post('/users', (req, res) => {
   res.json(users[lastIndex]);
 });
 
+/** find a user by id in the req.params
+ * update that users name
+ * update tha users occupation
+ * return the new updated user info back to client
+ */
 app.put('/users/:id', (req, res)=>{
    //create new user object variable to hold data
    let Id = req.params.id;
@@ -58,6 +63,11 @@ app.put('/users/:id', (req, res)=>{
    res.json(found);
 });
 
+/**find a user by id in the req.params
+ * get the index of that user
+ * delete that user from the array using splice
+ * return the 204 status code back to the client
+ */
 app.delete('/users/:id', (req, res)=>{
   let Id = req.params.id;
   console.log("Id is ", Id)

@@ -36,7 +36,8 @@ app.post('/users', (req, res) => {
   //new user has a new id, +2 to the last index in array
   newUser._id = lastIndex + 2;
   //new user has a name, set by the req.body.name
-  newUser.name = json.name;
+  newUser.first_name = json.first_name;
+  newUser.last_name = json.last_name;
   //new user has an occupation, set by the req.body
   newUser.occupation = json.occupation;
   //add the new user to the users array
@@ -57,7 +58,8 @@ app.put('/users/:id', (req, res)=>{
    let found = users.find(el => el._id == Id);
    let json = req.body;
    console.log("body = ", json);
-   found.name = json.name;
+   found.first_name = json.first_name;
+   found.last_name = json.last_name;
    found.occupation = json.occupation;
    console.log(found);
    res.json(found);
